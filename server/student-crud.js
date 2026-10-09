@@ -59,7 +59,7 @@ async function runCRUD() {
     const updatedStudent = await Student.findByIdAndUpdate(
       newStudent._id,
       { department: "Information Technology" },
-      { new: true }
+      { returnDocument: "after" }
     );
     console.log("Updated Student Record (Department updated to 'Information Technology'):");
     console.log(updatedStudent);
