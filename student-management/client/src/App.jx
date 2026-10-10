@@ -1,0 +1,70 @@
+
+import { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [page, setPage] = useState("login");
+
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>Student Management System</h1>
+        <p>Manage student records easily</p>
+      </header>
+
+      <main className="container">
+        <nav className="nav">
+          <button onClick={() => setPage("login")}>Login</button>
+          <button onClick={() => setPage("register")}>Register</button>
+          <button onClick={() => setPage("students")}>Students</button>
+        </nav>
+
+        {page === "login" && (
+          <section className="card">
+            <h2>Welcome Back</h2>
+            <p>Login to your account</p>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <label>Email</label>
+              <input type="email" placeholder="Enter your email" required />
+
+              <label>Password</label>
+              <input type="password" placeholder="Enter your password" required />
+
+              <button className="primary" type="submit">Login</button>
+            </form>
+          </section>
+        )}
+
+        {page === "register" && (
+          <section className="card">
+            <h2>Create Account</h2>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <label>Full Name</label>
+              <input type="text" placeholder="Enter your name" required />
+
+              <label>Email</label>
+              <input type="email" placeholder="Enter your email" required />
+
+              <label>Password</label>
+              <input type="password" minLength="8" placeholder="At least 8 characters" required />
+
+              <button className="primary" type="submit">Register</button>
+            </form>
+          </section>
+        )}
+
+        {page === "students" && (
+          <section className="card">
+            <h2>Student Dashboard</h2>
+            <p>Your student records will appear here.</p>
+            <p>Next, we will connect this page to your MongoDB API.</p>
+          </section>
+        )}
+      </main>
+
+      <footer>Student Management System · Experiment 10</footer>
+    </div>
+  );
+}
+
+export default App;
